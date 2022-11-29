@@ -9,10 +9,12 @@ import InboxIcon from "@mui/icons-material/Inbox";
 import DraftsIcon from "@mui/icons-material/Drafts";
 import React, { useRef, useState } from "react";
 import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
 import { CircularProgress } from "@mui/material";
-import EVSEStatus from "../evsestatus/EVSEStatus";
+import { useNavigate } from "react-router-dom";
 
 export default function EVSEList() {
+  let navigate = useNavigate();
   const [error, setError] = useState<any>(null);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [evses, setEvses] = useState<any[]>(["1", "2", "3"]);
@@ -64,7 +66,14 @@ export default function EVSEList() {
                     </ListItemIcon>
                     <ListItemText primary={"EVSE " + evse} />
                   </ListItemButton>
-                  <EVSEStatus evseId={evse} />
+                  <Button
+                    onClick={() => {
+                      console.log("Naviaging to evse");
+                      navigate("/evses/" + evse);
+                    }}
+                  >
+                    Hello
+                  </Button>
                   <Divider />
                 </ListItem>
               );
