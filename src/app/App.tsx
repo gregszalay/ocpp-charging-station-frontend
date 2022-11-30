@@ -1,18 +1,8 @@
-import { ThemeProvider } from "@mui/material/styles";
-import { Box, CssBaseline, useMediaQuery } from "@mui/material";
-
-import EVSEList from "../evselist/EVSEList";
-import React, { useRef, useState } from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-import EVSE from "../evse/EVSE";
+import EVSEList from "../evselist/EVSEList";
+import EVSE from "../evsedetails/EVSEDetails";
 
-/***************************************************************************/
-
-interface Props {}
-
-/***************************************************************************/
-
-function App(props: Props) {
+function App() {
   return (
     <Router>
       <Routes>

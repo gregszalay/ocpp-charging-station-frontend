@@ -1,20 +1,13 @@
+import React, { useRef, useState } from "react";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
-import InboxIcon from "@mui/icons-material/Inbox";
-import DraftsIcon from "@mui/icons-material/Drafts";
-import React, { useRef, useState } from "react";
 import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-import Container from "@mui/material/Container";
 import { CircularProgress } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import EVSEItem from "./util-components/Item";
+import EVSEItem from "./util-components/EVSEItem";
 import Typography from "@mui/material/Typography";
+import appTheme from "../app/theme/AppTheme";
 
 export default function EVSEList() {
   const [errorLoading, setErrorLoading] = useState<any>(null);
@@ -42,34 +35,40 @@ export default function EVSEList() {
   }, []);
 
   return (
-    <Box margin={2} sx={{ width: "100%", bgcolor: "background.paper" }}>
+    <Box
+      sx={{
+        mb: 0,
+        display: "flex",
+        flexDirection: "column",
+        height: "100vh",
+        overflow: "hidden",
+        overflowY: "scroll",
+        padding: 0,
+        background: appTheme.palette.background.default,
+      }}
+    >
       <Typography
         variant="h1"
         component="div"
-        padding={2}
+        padding={0}
         align="center"
         sx={{
-          fontSize: 110,
-          paddingBottom: 2,
-          paddingTop: 2,
+          fontSize: 25,
+          paddingBottom: 1,
+          paddingTop: 1,
         }}
       >
         {errorLoading ? (
           <div>Failed to load page: {errorLoading.message}</div>
         ) : !isLoaded || !evses || evses.length === 0 ? (
-          <Stack
-            sx={{ height: "50vh" }}
-            direction="column"
-            justifyContent="center"
-            alignItems="center"
-          >
+          <Stack direction="column" justifyContent="center" alignItems="center">
             <CircularProgress color="info" />
           </Stack>
         ) : (
-          <List>
+          <List disablePadding>
             {evses.map((evse: any) => {
               return (
-                <ListItem key={evse}>
+                <ListItem key={evse} sx={{ margin: "0", padding: 0.5 }}>
                   <EVSEItem evseId={evse} />
                   <Divider />
                 </ListItem>

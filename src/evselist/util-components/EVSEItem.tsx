@@ -1,13 +1,9 @@
-import Box from "@mui/material/Box";
-import List from "@mui/material/List";
-import React, { useRef, useState } from "react";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import { CircularProgress } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import { useNavigate } from "react-router-dom";
+import appTheme from "../../app/theme/AppTheme";
 
 interface Props {
   evseId: number;
@@ -17,48 +13,55 @@ export default function EVSEItem(props: Props) {
   let navigate = useNavigate();
 
   return (
-    <Paper sx={{ background: "grey", width: "100%", maxHeight: "25vh" }}>
+    <Paper
+      sx={{
+        background: appTheme.palette.secondary.light,
+        width: "100%",
+        maxHeight: "35vh",
+        m: "0",
+      }}
+    >
       <Stack
         direction="row"
         justifyContent="space-between"
         alignContent="center"
-        padding={5}
+        padding={0}
       >
         <Typography
           variant="h1"
-          component="div"
-          padding={2}
+          padding={3}
           align="center"
           sx={{
-            fontSize: 110,
-            paddingBottom: 2,
-            paddingTop: 2,
+            fontSize: 35,
           }}
         >
-          EVSE {props.evseId}{" "}
+          {"EVSE " + props.evseId}
         </Typography>
-
         <Button
           variant="contained"
-          sx={{ width: "45vw", minHeight: "100%" }}
+          sx={{
+            width: "50vw",
+            background: appTheme.palette.primary.main,
+            m: 1,
+            p: 0,
+          }}
           onClick={() => {
-            console.log("Naviaging to evse");
             navigate("/evses/" + props.evseId);
           }}
         >
           <Typography
             variant="h1"
             component="div"
-            padding={2}
+            padding={0}
             align="center"
             sx={{
-              fontSize: 110,
-              paddingBottom: 2,
-              paddingTop: 2,
+              fontSize: 35,
+              paddingBottom: 0,
+              paddingTop: 0,
+              m: 0,
             }}
           >
-            {" "}
-            Details
+            {"Details >>"}
           </Typography>
         </Button>
       </Stack>

@@ -40,8 +40,6 @@ const theme = createTheme({
     fontFamily: [
       "Archivo",
       "sans-serif",
-      /*'Exo',
-      'sans-serif',*/
     ].join(","),
     h5: {
       fontWeight: 300,
