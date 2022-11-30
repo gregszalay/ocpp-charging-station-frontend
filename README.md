@@ -13,3 +13,8 @@ The application is designed to run in kiosk mode on a touch display connected to
 ## The backend
 
 The app is designed to connect to the local charging station backend http server. (See [ocpp-charging-station-go](https://github.com/gregszalay/ocpp-charging-station-go) for details.)
+
+## Build & Serve
+
+    npm run build
+    serve -s build
