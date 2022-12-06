@@ -47,9 +47,7 @@
     "start": "PORT=3001 react-scripts start",
     "build": "CI=false react-scripts build",
     "test": "react-scripts test",
-    "test-firestore": "mocha firestore.rules.test.js",
-    "eject": "react-scripts eject",
-    "deploy-dev": "cross-env DOTENV_CONFIG_PATH=config-dev.env node -r dotenv/config test.js"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

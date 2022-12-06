@@ -17,4 +17,4 @@ The app is designed to connect to the local charging station backend http server
 ## Build & Serve
 
     npm run build
-    serve -s build
+    serve -s build -l 3001

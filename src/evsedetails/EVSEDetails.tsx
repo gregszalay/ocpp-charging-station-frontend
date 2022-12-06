@@ -44,7 +44,7 @@ export default function EVSE() {
             }
           );
       }
-    }, 1000);
+    }, 500);
   }, [isRFIDReadInProgressStart, isRFIDReadInProgressStop, evseId]);
 
   function getEVSEStatus(evse: EVSEStatusDataForUI): ReactElement {
@@ -78,11 +78,7 @@ export default function EVSE() {
       body: JSON.stringify(rfid),
       headers: { "Content-type": "application/json; charset=UTF-8" },
     })
-      .then((res) => {
-        console.log("Start message sent successfully");
-      })
-      .catch((error) => console.log("Error: ", error))
-      .finally(() => setIsRFIDReadInProgressStart(false));
+    setIsRFIDReadInProgressStart(false);
   };
   const readRFIDAndStop = (rfid: RFID) => {
     console.info("You clicked the stopcharge Chip.");
@@ -92,11 +88,7 @@ export default function EVSE() {
       body: JSON.stringify(rfid),
       headers: { "Content-type": "application/json; charset=UTF-8" },
     })
-      .then((res) => {
-        console.log("Stop message sent successfully");
-      })
-      .catch((error) => console.log("Error: ", error))
-      .finally(() => setIsRFIDReadInProgressStop(false));
+    setIsRFIDReadInProgressStop(false);
   };
 
   if (error) {
@@ -271,7 +263,7 @@ export default function EVSE() {
                   paddingRight: 4,
                 }}
               >
-                {evseInfo.powerActiveImport_kw_float.toFixed(2) + " kW"}
+                {evseInfo.powerActiveImport_kw_float.toFixed(3) + " kW"}
               </Paper>
             </Grid>
             <Grid item xs={6}>
@@ -284,7 +276,7 @@ export default function EVSE() {
                   paddingRight: 4,
                 }}
               >
-                {evseInfo.energyActiveNet_kwh_float.toFixed(2) + " kWh"}
+                {evseInfo.energyActiveNet_kwh_float.toFixed(3) + " kWh"}
               </Paper>
             </Grid>
             <Grid item xs={6}>

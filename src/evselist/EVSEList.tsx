@@ -15,23 +15,25 @@ export default function EVSEList() {
   const [evses, setEvses] = useState<any[]>(["1", "2", "3"]);
 
   React.useEffect(() => {
-    fetch("http://127.0.0.1:8090/evses/active/ids")
-      .then((res) => {
-        console.log(res);
-        return res.json();
-      })
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          console.log(result);
-          setEvses(result);
-        },
-        (errorLoading) => {
-          console.log(errorLoading);
-          setIsLoaded(true);
-          setErrorLoading(errorLoading);
-        }
-      );
+    setInterval(() => {
+      fetch("http://127.0.0.1:8090/evses/active/ids")
+        .then((res) => {
+          console.log(res);
+          return res.json();
+        })
+        .then(
+          (result) => {
+            setIsLoaded(true);
+            console.log(result);
+            setEvses(result);
+          },
+          (errorLoading) => {
+            console.log(errorLoading);
+            setIsLoaded(true);
+            setErrorLoading(errorLoading);
+          }
+        );
+    }, 1000);
   }, []);
 
   return (
